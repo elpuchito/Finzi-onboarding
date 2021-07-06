@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:onboarding/pages/registration/1.dart';
+import 'package:onboarding/pages/onboarding/Bienvenidos.dart';
 import 'package:onboarding/widgets/button_green.dart';
-import 'package:onboarding/widgets/button_purple.dart';
 import 'package:onboarding/widgets/card_boarding.dart';
 import 'package:onboarding/widgets/footer.dart';
 import 'package:onboarding/widgets/logo.dart';
+import 'package:transition/transition.dart';
 
-class Bienvenidos extends StatelessWidget {
-  const Bienvenidos({Key? key}) : super(key: key);
+class Page3 extends StatelessWidget {
+  const Page3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,30 +26,23 @@ class Bienvenidos extends StatelessWidget {
                   SizedBox(
                     height: 60,
                   ),
-                  Container(
-                    height: 70,
-                    child: SvgPicture.asset(logo, semanticsLabel: 'Logo'),
-                  ),
+                  Logo(),
                   SizedBox(height: 20),
                   BoardingCard(
-                    isBienvenidoPage: true,
+                    title: '¡Juega!',
+                    isBienvenidoPage: false,
+                    button2: Text(''),
                     button: ButtonGreen(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Registration(),
-                          ),
-                        );
-                      },
-                      title: 'Iniciar Sesion',
-                      icon: Icons.verified_user_rounded,
-                    ),
-                    button2: ButtonPurple(
-                        onTap: () {},
-                        title: 'Crear Cuenta',
-                        icon: Icons.supervised_user_circle_rounded),
-                    title: '¡Aprende!',
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              Transition(
+                                  child: Bienvenidos(),
+                                  transitionEffect:
+                                      TransitionEffect.RIGHT_TO_LEFT));
+                        },
+                        title: 'Comenzar',
+                        icon: Icons.arrow_forward_rounded),
                   ),
                   SizedBox(
                     height: 40,
@@ -58,7 +50,6 @@ class Bienvenidos extends StatelessWidget {
                   Footer(
                     title: 'La cuenta bancaria mas\nbacana para jovenes',
                   ),
-                  SizedBox(height: 50),
                 ],
               )
             ],

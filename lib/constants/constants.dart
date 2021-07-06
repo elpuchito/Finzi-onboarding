@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+String purple_mascot = 'assets/images/purple_mascot.svg';
+String yellow_mascot = 'assets/images/yellow_mascot.svg';
+String gold_logo = 'assets/images/goldLogo.svg';
+
 const buttonStyle = TextStyle(
   fontSize: 20,
   color: Colors.white,
